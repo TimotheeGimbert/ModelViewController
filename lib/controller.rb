@@ -3,11 +3,14 @@ require 'view'
 
 class Controller
 
+  def initialize
+    @view = View.new
+  end
+
   def create_gossip
-    puts "Author ?"
-    author = gets.chomp
-    puts "Content of the gossip :"
-    content = gets.chomp
+    params = @view.create_gossip
+    author = params.keys.join
+    content = params.values.join
     gossip = Gossip.new(author, content)
     gossip.save
   end
