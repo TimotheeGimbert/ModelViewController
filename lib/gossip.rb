@@ -27,5 +27,14 @@ class Gossip
     return gossips
   end
 
+  def self.destroy(key)
+  # destroys a gossip in the json based on its key
+    json = File.read('db/gossips.json')
+    obj = JSON.parse(json)
+    obj.delete(key)
+    File.open('db/gossips.json', 'w') do |f|
+      f.write JSON.pretty_generate(obj)
+    end
+  end
 
 end

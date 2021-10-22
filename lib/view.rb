@@ -12,4 +12,10 @@ class View
     gossips.each {|gossip| puts "#{gossip.author} | #{gossip.content}"}
   end
 
+  def destroy_gossip
+    puts "Entrer le nom de l'autheur du potin à supprimer :"
+    author = gets.chomp
+    return author
+  end
+
 end
