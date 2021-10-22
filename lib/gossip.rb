@@ -8,13 +8,24 @@ class Gossip
   end
 
   def save
+  # saves a gossip author and content into Json file
     json = File.read('db/gossips.json')
-    json_hash = JSON.parse(json)
-    json_hash[@author] = @content 
+    obj = JSON.parse(json)
+    obj[@author] = @content
+
     File.open('db/gossips.json', 'w') do |f|
-      f.write JSON.pretty_generate(json_hash)
+      f.write JSON.pretty_generate(obj)
     end
-    
   end
+
+  def self.all
+  # returns a Gossip instance for each key:value pair in the Json
+    json = File.read('db/gossips.json')
+    obj = JSON.parse(json)
+    gossips = Array.new
+    obj.each {|k,v| gossips << Gossip.new(k,v) }
+    return gossips
+  end
+
 
 end
