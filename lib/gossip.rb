@@ -8,8 +8,11 @@ class Gossip
   end
 
 
-  def save(gossip)
-
+  def save
+    File.open('db/gossips.json', 'a') do |f| 
+      f.write(JSON.pretty_generate(@author => @content))
+    end
   end
+
 
 end
