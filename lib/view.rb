@@ -13,7 +13,7 @@ class View
   end
 
   def destroy_gossip
-    puts "Entrer le nom de l'autheur du potin à supprimer :"
+    puts "\n\nEntrer le nom de l'autheur du potin à supprimer :".red.on_white
     author = gets.chomp
     return author
   end
